@@ -1,3 +1,4 @@
+import { SharedModule } from './shared/shared.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -5,13 +6,13 @@ import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    SharedModule
   ],
   providers: [],
-  // exports: [], lo que se exporta desde este módulo iría en bootstrap. En otros módulos no existe bootstrap y se pone con el exports.
   bootstrap: [AppComponent]
 })
 export class AppModule { }
