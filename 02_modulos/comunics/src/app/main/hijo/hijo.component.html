@@ -1,0 +1,7 @@
+<div class="card">
+  <h2 class="card-title">Componente Hijo</h2>
+  <p>Me llamo {{sMiNombre}}</p>
+  <div class="card-body">Detalle del hijo</div>
+  <button (click)="btnEvento()">No me gusta el nombre que me has mandado {{sMiNombre}}</button>
+  <input type="text" placeholder="Que nombre quieres" [(ngModel)]="sNombreFav">
+</div>

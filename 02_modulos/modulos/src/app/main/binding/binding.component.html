@@ -1,0 +1,21 @@
+<article class=row> 
+    <div class="col">
+      <label>Dime tu nombre</label>
+      <input type="text" [(ngModel)] = "sNombre">
+      <input type="checkBox" [(ngModel)] = "isSpanish">
+      <button (click) = "btnBorrar()"> Borrar </button> <!-- En vez de llamar a una funcion se puede poner lo que se quiere que haga aqui,
+                                                             pero no queda limpio el codigo -->
+    </div>
+  <div class="col">
+    <h1>Hola {{sNombre.toUpperCase()}}</h1>
+  </div>
+
+  
+ 
+  <div class="col-6">
+    <h2>Expresiones</h2>
+    <p> El producto * 4 es {{nNumero * 4}}</p> <!-- prueba de operacion dentro de html -->
+    <p>{{isSpanish ? 'Gracias':'Thanks'}}</p> <!-- prueba de operacion dentro de html -->
+  </div>
+
+</article>

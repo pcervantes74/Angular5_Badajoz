@@ -1,0 +1,7 @@
+    <div class="card">
+        <h2 class="card-title">Componente padre</h2>
+        <input type="text" placeholder="Escribe tu nombre " [(ngModel)]="sNombre">
+        <app-hijo [sMiNombre]="sNombre" (recibido)="fnResponderRecibido($event)"></app-hijo>
+        <p>El hijo se llama {{sNombre}}</p>
+    </div>
+  

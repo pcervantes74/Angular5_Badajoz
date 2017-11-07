@@ -1,0 +1,12 @@
+<article class=row> 
+  <h2>Referencias locales</h2>
+    <div class="col-6">
+      <label>Dime tu nombre</label>
+      <input type="text" #nombre>
+      <button (click) = "nombre.value = ''"> Borrar </button> <!-- En vez de llamar a una funcion se puede poner lo que se quiere que haga aqui,
+                                                             pero no queda limpio el codigo -->
+    </div>
+  <div class="col-6">
+    <h1>Hola {{nombre.value}}</h1>  <!-- Para que salga el valor en el Hola hay que sacar el foco -->
+  </div>
+</article>
