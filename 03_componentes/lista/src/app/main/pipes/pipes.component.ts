@@ -21,5 +21,4 @@ export class PipesComponent implements OnInit {
     this.dFecha = new Date();
     this.oLibro = {autor: 'Cervantes', libro: 'El Quijote'};
     }
-
 }
