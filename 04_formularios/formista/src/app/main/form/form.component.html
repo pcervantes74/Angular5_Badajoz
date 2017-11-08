@@ -1,0 +1,109 @@
+<article>
+    <form novalidate #formulario="ngForm" (ngSubmit)="enviar()">
+        <!--Text-->    
+        <h2>Usuario</h2>
+        <p>
+            <label for="firstname">Nombre</label>
+            <input type="text" name="firstname" #nameState="ngModel"
+            placeholder="Indica tu nombre" required minlength="4"
+            [(ngModel)]="user.nombre">
+        </p>
+
+            <div [hidden]="nameState.valid || nameState.untouched" >
+                <div class="error-message"
+                    [hidden]="!nameState.errors?.required">
+                    <p>El apellido es obligatorio</p>
+                </div>
+                <div class="error-message"
+                    [hidden]="!nameState.errors?.minlength">
+                  <p>Debe contener al menos 4 caracteres</p>
+                </div>
+            </div>
+  
+        <p>
+            <label for="lastname">Apellidos</label>
+            <input type="text" name="lastname" #apellidoState="ngModel"
+                placeholder="Indica tus apellidos" required
+                [(ngModel)]="user.apellidos">
+
+        </p>
+        <div [hidden]="apellidoState.valid || apellidoState.untouched" 
+            class="error-message">
+            <p>El apellido es obligatorio</p>
+        </div>
+        <p>
+            <label for="telefono">Telefono</label>
+            <input type="text" name="telefono" #telefonoState="ngModel"
+            placeholder="Indica tu telefono" required pattern="^\d{9}$"
+              [(ngModel)]="user.telefono">
+        </p>
+        <div [hidden]="telefonoState.valid || telefonoState.untouched" >
+            <div class="error-message"
+                [hidden]="!telefonoState.errors?.pattern">
+                <p>formato no valido</p>
+            </div>
+        </div>
+
+        <!--Radio-Buttos-->
+        <h2>Selecciona una Impresora</h2>
+        <div *ngFor="let impresora of aPrinters">
+            <input type="radio" 
+                name ="printer" [(ngModel)]="impresoraSeleccionada" [value]="impresora"
+                (ngModelChange)="avisarImpresora()">
+            <label>{{impresora.modelo}}</label>
+        </div>
+
+        <!--Checkbox-->    
+        <h2>Seleción de opciones</h2>
+        <p>
+            <input id="print" name="print" type="checkbox" [(ngModel)]="isColor" 
+                [disabled]="!impresoraSeleccionada"
+                (change)="avisarColor()">
+            <label for="print">Imprimir color</label><br>
+            
+            <input id="tono" name="tono" type="checkbox" [(ngModel)]="isClaro"
+                [disabled]="!impresoraSeleccionada" 
+                (change)="avisarColor()"> 
+            <label for="tono">Tono claro</label>			
+        </p>
+        
+        <!--Select/options --> 
+        <p>
+            <label for="select">Departamento </label>
+            <select id="select" name="select"
+            [(ngModel)]="departamentoSeleccionado" (ngModelChange)="avisarDepartamento()"> 
+                <option *ngFor="let departamento of aDepartamentos"
+                    [ngValue]="departamento">
+                    {{departamento.nombre}}
+                </option>
+            </select>
+        </p>	
+        <p>
+            <button type="submit" [disabled]='!formulario.valid'>Enviar</button>
+            <!-- <button type="submit" [disable]='formulario.invalid'>Enviar</button> -->
+            <button type="button" (click)="borrar()" [disabled]='!formulario.valid'>Borrar</button>
+        </p>
+      </form>
+
+
+    <p>
+        <input id="verResumen" name="verResumen" type="checkbox" [(ngModel)]="verResumen"> 
+        <label for="verResumen">Ver Resumen</label>			
+    </p>    
+    <div *ngIf="verResumen">
+        <h2>Resultado</h2>
+        <ul>
+            <li>Usuario: {{user | json}}</li>
+            <li>Impresora seleccionada: {{impresoraSeleccionada | json}}</li>
+            <li>Opción print seleccionada: {{isColor}}</li>
+            <li>Opción claro seleccionada: {{isClaro}}</li>
+            <li>Provincia elegida: {{departamentoSeleccionado | json}}</li>
+        </ul>    
+    </div>	
+    <legend>Validación</legend>
+    <ul>
+        <li>Validez: {{formulario.valid}}</li>
+        <li>Untouched: {{formulario.untouched}}</li>
+        <li>Pristine: {{formulario.pristine}}</li>
+    </ul>    
+</article>
