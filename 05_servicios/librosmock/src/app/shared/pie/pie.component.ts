@@ -13,8 +13,8 @@ export class PieComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.sAutor = 'Alejandro Cerezo';
-    this.sLugar = 'Badajoz';
+    this.sAutor = 'Manolo Escobar';
+    this.sLugar = 'Puesto numero 2';
   }
 
 }

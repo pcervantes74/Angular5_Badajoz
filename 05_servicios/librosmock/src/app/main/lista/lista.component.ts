@@ -20,7 +20,6 @@ export class ListaComponent implements OnInit {
   buscar() {
     this.aLibros =
       this.librosService.buscarLibros(this.sClave);
-   
   }
 
 }

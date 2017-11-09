@@ -1,12 +1,13 @@
 <div>
-    <h2>Busca Simulada</h2>    
+    <h2>Busca Google</h2>    
   <p>
     <input type="text" 
     placeholder="Escribe la palabra a buscar" 
     [(ngModel)]="sClave">
   </p>
   <p>
-    <button (click)="buscar()">Buscar</button>
+    <button (click) = "buscarPromesa()">Buscar (Promesas)</button>
+    <button (click) = "buscarReactive()">Buscar (Reactive)</button>
   </p>
   <div *ngIf="aLibros.length">
     <h2>Lista de ideas</h2>
